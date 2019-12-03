@@ -1,0 +1,77 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: jkoopman <jkoopman@student.codam.nl>         +#+                      #
+#                                                    +#+                       #
+#    Created: 2019/10/29 11:23:43 by jkoopman       #+#    #+#                 #
+#    Updated: 2019/12/03 14:35:07 by jkoopman      ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
+
+COM_COLOR   = \033[1;31m
+OBJ_COLOR   = \033[0;36m
+OK_COLOR    = \033[0;32m
+ERROR_COLOR = \033[0;31m
+WARN_COLOR  = \033[0;33m
+NO_COLOR    = \033[m
+OK_STRING    = "[OK]"
+ERROR_STRING = "[ERROR]"
+WARN_STRING  = "[WARNING]"
+COM_STRING   = "Compiling"
+
+NAME = libft.a
+FLAGS = -Wall -Werror -Wextra
+
+SOURCES =	ft_bzero.c				ft_isalnum.c		ft_isalpha.c \
+			ft_isdigit.c			ft_memchr.c			ft_isascii.c \
+			ft_isprint.c			ft_memcpy.c			ft_memccpy.c \
+			ft_memmove.c			ft_memset.c			ft_strlen.c \
+			ft_tolower.c			ft_toupper.c		ft_memcmp.c \
+			ft_strchr.c				ft_strrchr.c		ft_strncmp.c \
+			ft_strnstr.c			ft_atoi.c			ft_strlcat.c \
+			ft_strlcpy.c 			ft_calloc.c			ft_strdup.c \
+			ft_substr.c				ft_strjoin.c		ft_split.c \
+			ft_strtrim.c			ft_itoa.c			ft_strmapi.c \
+			ft_putchar_fd.c			ft_putstr_fd.c		ft_putendl_fd.c \
+			ft_putnbr_fd.c			ft_lstnew.c			ft_lstadd_front.c \
+			ft_lstsize.c			ft_lstlast.c		ft_lstadd_back.c \
+			ft_lstdelone.c			ft_lstclear.c		ft_lstiter.c \
+			ft_lstmap.c
+
+OBJECTS = $(SOURCES:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJECTS)
+	@printf "%b" "$(COM_COLOR)Building library: $(NO_COLOR)"
+	@ar rc $(NAME) $(OBJECTS)
+	@ranlib $(NAME)
+	@printf "%b" "$(OK_COLOR)$(OK_STRING)\n$(NO_COLOR)"
+
+%.o: %.c
+	@$(CC) -c $(FLAGS) $< -o $@; \
+        RESULT=$$?; \
+        if [ $$RESULT -ne 0 ]; then \
+            printf "%b %b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" \
+				"$(ERROR_COLOR)$(ERROR_STRING)$(NO_COLOR)\n"; \
+		else  \
+            printf "%b %b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $(@F)" \
+				"$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"; \
+        fi; \
+        exit $$RESULT
+
+clean:
+	@printf "%b" "$(COM_COLOR)Cleaning up object files: $(NO_COLOR)"
+	@$(RM) $(OBJECTS) a.out
+	@printf "%b" "$(OK_COLOR)$(OK_STRING)\n$(NO_COLOR)"
+
+fclean: clean
+	@printf "%b" "$(COM_COLOR)Cleaning up $(NAME): $(NO_COLOR)"
+	@$(RM) $(NAME)
+	@printf "%b" "$(OK_COLOR)$(OK_STRING)\n$(NO_COLOR)"
+
+re: fclean all
+
+.PHONY: all clean fclean re
