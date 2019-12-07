@@ -1,44 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_itoa.c                                          :+:    :+:            */
+/*   ft_getnumlen.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/31 17:42:30 by jkoopman       #+#    #+#                */
-/*   Updated: 2019/12/07 17:34:18 by jkoopman      ########   odam.nl         */
+/*   Created: 2019/12/07 15:18:33 by jkoopman       #+#    #+#                */
+/*   Updated: 2019/12/07 17:00:42 by jkoopman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
-#include <limits.h>
+#include <stddef.h>
 
-char				*ft_itoa(int n)
+size_t		ft_getnumlen(long long num, int base)
 {
-	char		*str;
-	size_t		i;
+	size_t		len;
 
-	if (n == INT_MIN)
-		return (ft_strdup("-2147483648"));
-	i = ft_getnumlen(n, 10);
-	str = (char*)malloc(i + 1);
-	if (str == NULL)
-		return (NULL);
-	str[i] = '\0';
-	i--;
-	if (n == 0)
-		str[0] = '0';
-	else if (n < 0)
+	len = 0;
+	if (num == 0)
+		return (1);
+	if (num < 0)
 	{
-		str[0] = '-';
-		n *= -1;
+		num *= -1;
+		len++;
 	}
-	while (n > 0)
+	while (num > 0)
 	{
-		str[i] = '0' + (n % 10);
-		n /= 10;
-		i--;
+		num /= base;
+		len++;
 	}
-	return (str);
+	return (len);
 }

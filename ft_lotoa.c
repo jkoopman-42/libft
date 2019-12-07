@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_itoa.c                                          :+:    :+:            */
+/*   ft_lotoa.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/31 17:42:30 by jkoopman       #+#    #+#                */
-/*   Updated: 2019/12/07 17:34:18 by jkoopman      ########   odam.nl         */
+/*   Updated: 2019/12/07 17:34:28 by jkoopman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include <stdlib.h>
 #include <limits.h>
 
-char				*ft_itoa(int n)
+char				*ft_lotoa(long n)
 {
 	char		*str;
 	size_t		i;
 
-	if (n == INT_MIN)
-		return (ft_strdup("-2147483648"));
+	if (n == LONG_MIN)
+		return (ft_strdup("-9223372036854775808"));
 	i = ft_getnumlen(n, 10);
 	str = (char*)malloc(i + 1);
 	if (str == NULL)
