@@ -6,7 +6,7 @@
 #    By: jkoopman <jkoopman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/29 11:23:43 by jkoopman       #+#    #+#                 #
-#    Updated: 2019/12/07 17:34:03 by jkoopman      ########   odam.nl          #
+#    Updated: 2019/12/08 02:11:29 by jkoopman      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ FLAGS = -Wall -Werror -Wextra
 SOURCES = ft_atoi.c \
 			ft_bzero.c \
 			ft_calloc.c \
+			ft_get_next_line.c \
 			ft_getnumlen.c \
 			ft_isalnum.c \
 			ft_isalpha.c \
