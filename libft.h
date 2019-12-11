@@ -6,7 +6,7 @@
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 11:10:37 by jkoopman       #+#    #+#                */
-/*   Updated: 2019/12/08 02:15:41 by jkoopman      ########   odam.nl         */
+/*   Updated: 2019/12/11 15:27:28 by jkoopman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@
 ** Defines
 */
 
-# ifndef GNL_BUFFER_SIZE
-#  define GNL_BUFFER_SIZE 32
-# endif
+# define GNL_BUFFER_SIZE 128
+# define CHARSET_BASE "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 /*
 ** Structs

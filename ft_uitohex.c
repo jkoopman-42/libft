@@ -6,14 +6,12 @@
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/07 16:06:52 by jkoopman       #+#    #+#                */
-/*   Updated: 2019/12/07 17:01:10 by jkoopman      ########   odam.nl         */
+/*   Updated: 2019/12/11 15:30:16 by jkoopman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-
-const static char	*g_hexset = "0123456789ABCDEF";
 
 char				*ft_uitohex(unsigned int n)
 {
@@ -30,7 +28,7 @@ char				*ft_uitohex(unsigned int n)
 		str[0] = '0';
 	while (n > 0)
 	{
-		str[i] = g_hexset[(n % 16)];
+		str[i] = CHARSET_BASE[(n % 16)];
 		n /= 16;
 		i--;
 	}
