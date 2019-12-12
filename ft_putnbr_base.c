@@ -6,7 +6,7 @@
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/07 16:20:48 by jkoopman       #+#    #+#                */
-/*   Updated: 2019/12/11 15:28:50 by jkoopman      ########   odam.nl         */
+/*   Updated: 2019/12/12 08:26:15 by prmerku       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ int		ft_putnbr_base(unsigned long long num, size_t base, int sign, int uc)
 		return (-1);
 	if (num >> 63 & 1 && sign)
 	{
-		num &= ~1;
 		if (base == 10)
 			write(1, "-", 1);
+		else
+			num &= ~1;
 		nbr = (num * -1);
 	}
 	else
