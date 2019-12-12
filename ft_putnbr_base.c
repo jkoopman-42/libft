@@ -6,7 +6,7 @@
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/07 16:20:48 by jkoopman       #+#    #+#                */
-/*   Updated: 2019/12/12 08:26:15 by prmerku       ########   odam.nl         */
+/*   Updated: 2019/12/12 17:39:22 by jkoopman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,20 @@ int		ft_putnbr_base(unsigned long long num, size_t base, int sign, int uc)
 	if (nbr >= base)
 		ft_putnbr_base(nbr / base, base, sign, uc);
 	c = CHARSET_BASE[nbr % base];
+	if (uc == 0)
+		c |= 32;
+	return (write(1, &c, 1));
+}
+
+int		ft_putint_base(unsigned int num, size_t base, int uc)
+{
+	char	c;
+
+	if (base < 2 || base > 36)
+		return (-1);
+	if (num >= base)
+		ft_putint_base(num / base, base, uc);
+	c = CHARSET_BASE[num % base];
 	if (uc == 0)
 		c |= 32;
 	return (write(1, &c, 1));
