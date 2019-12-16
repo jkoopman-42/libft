@@ -6,7 +6,7 @@
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 11:10:37 by jkoopman       #+#    #+#                */
-/*   Updated: 2019/12/12 17:47:35 by jkoopman      ########   odam.nl         */
+/*   Updated: 2019/12/16 12:17:42 by jkoopman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int					ft_get_next_line(int fd, char **line);
 ** Write Functions
 */
 
-int					ft_putint_base(unsigned int num, size_t base, int uc);
+int					ft_putint_base(long num, size_t base, int uc);
 int					ft_putnbr_base(unsigned long long num, size_t base, \
 						int sign, int uc);
 void				ft_putchar_fd(char c, int fd);
