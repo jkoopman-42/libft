@@ -6,10 +6,11 @@
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/01 11:58:01 by jkoopman       #+#    #+#                */
-/*   Updated: 2020/01/14 17:08:10 by jkoopman      ########   odam.nl         */
+/*   Updated: 2020/01/15 18:43:24 by jkoopman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
