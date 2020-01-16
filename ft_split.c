@@ -6,7 +6,7 @@
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 17:45:38 by jkoopman       #+#    #+#                */
-/*   Updated: 2019/12/03 14:36:46 by jkoopman      ########   odam.nl         */
+/*   Updated: 2020/01/16 19:30:45 by jkoopman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ static size_t		ft_wordcnt(const char *str, char c)
 		return (0);
 	while (str[i] != '\0')
 	{
-		while (str[i] != c && str[i] != '\0')
-			i++;
 		while (str[i] == c && str[i] != '\0')
+			i++;
+		while (str[i] != c && str[i] != '\0')
 			i++;
 		count++;
 	}
+	if (str[i - 1] == c)
+		count--;
 	return (count);
 }
 
@@ -102,6 +104,6 @@ char				**ft_split(const char *s, char c)
 	if (s == NULL || output == NULL)
 		return (NULL);
 	orig = output;
-	output = ft_copyover(output, s, c);
+	ft_copyover(output, s, c);
 	return (output);
 }
