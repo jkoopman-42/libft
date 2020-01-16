@@ -6,7 +6,7 @@
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 11:10:37 by jkoopman       #+#    #+#                */
-/*   Updated: 2019/12/16 12:17:42 by jkoopman      ########   odam.nl         */
+/*   Updated: 2020/01/16 13:01:55 by jkoopman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ char				**ft_split(char const *s, char c);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strdup(const char *s1);
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoin_free1(char const *s1, char const *s2);
+char				*ft_strjoin_free2(char const *s1, char const *s2);
+char				*ft_strjoin_free12(char const *s1, char const *s2);
 char				*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char				*ft_strnstr(const char *haystack, const char *needle, \
 						size_t len);
