@@ -6,7 +6,7 @@
 #    By: jkoopman <jkoopman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/29 11:23:43 by jkoopman       #+#    #+#                 #
-#    Updated: 2019/12/08 02:11:29 by jkoopman      ########   odam.nl          #
+#    Updated: 2020/01/17 17:21:10 by jkoopman      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ OBJECTS = $(SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@printf "%b" "$(COM_COLOR)Building library: $(NO_COLOR)"
+	@printf "%-57b" "$(COM_COLOR)Building library: $(NO_COLOR)"
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
 	@printf "%b" "$(OK_COLOR)$(OK_STRING)\n$(NO_COLOR)"
@@ -92,18 +92,18 @@ $(NAME): $(OBJECTS)
             printf "%b %b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" \
 				"$(ERROR_COLOR)$(ERROR_STRING)$(NO_COLOR)\n"; \
 		else  \
-            printf "%b %b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $(@F)" \
+            printf "%-60b %b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $(@F)" \
 				"$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"; \
         fi; \
         exit $$RESULT
 
 clean:
-	@printf "%b" "$(COM_COLOR)Cleaning up object files: $(NO_COLOR)"
+	@printf "%-57b" "$(COM_COLOR)Cleaning up object files: $(NO_COLOR)"
 	@$(RM) $(OBJECTS) a.out
 	@printf "%b" "$(OK_COLOR)$(OK_STRING)\n$(NO_COLOR)"
 
 fclean: clean
-	@printf "%b" "$(COM_COLOR)Cleaning up $(NAME): $(NO_COLOR)"
+	@printf "%-57b" "$(COM_COLOR)Cleaning up $(NAME): $(NO_COLOR)"
 	@$(RM) $(NAME)
 	@printf "%b" "$(OK_COLOR)$(OK_STRING)\n$(NO_COLOR)"
 
