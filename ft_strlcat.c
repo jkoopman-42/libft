@@ -6,7 +6,7 @@
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 12:28:55 by jkoopman      #+#    #+#                 */
-/*   Updated: 2020/06/29 11:58:51 by jkoopman      ########   odam.nl         */
+/*   Updated: 2020/07/04 13:46:59 by JKCTech       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t		ft_strlcat(char *dst, const char *src, size_t dstsize)
 		len += dstsize;
 	else
 		len += pos;
-	while (src != '\0' && pos + 1 < dstsize)
+	while (src != NULL && pos + 1 < dstsize)
 	{
 		dst[pos] = *src;
 		pos++;

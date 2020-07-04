@@ -6,7 +6,7 @@
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 15:25:30 by jkoopman      #+#    #+#                 */
-/*   Updated: 2020/06/29 11:58:51 by jkoopman      ########   odam.nl         */
+/*   Updated: 2020/07/04 13:43:13 by JKCTech       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		*ft_memccpy(void *dst, const void *src, int c, size_t n)
 		if (b[i] == (const unsigned char)c)
 		{
 			i++;
-			return (&dst[i]);
+			return (dst + i);
 		}
 		i++;
 	}

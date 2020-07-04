@@ -6,7 +6,7 @@
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 17:45:38 by jkoopman      #+#    #+#                 */
-/*   Updated: 2020/06/29 11:58:51 by jkoopman      ########   odam.nl         */
+/*   Updated: 2020/07/04 13:46:42 by JKCTech       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,12 @@ static char			**ft_copyover(char **output, const char *s, char c)
 char				**ft_split(const char *s, char c)
 {
 	char	**output;
-	char	**orig;
 
-	output = malloc(sizeof(char*) * (ft_wordcnt(s, c) + 1));
-	if (s == NULL || output == NULL)
+	if (s == NULL)
 		return (NULL);
-	orig = output;
+	output = malloc(sizeof(char*) * (ft_wordcnt(s, c) + 1));
+	if (output == NULL)
+		return (NULL);
 	ft_copyover(output, s, c);
 	return (output);
 }

@@ -6,20 +6,18 @@
 #    By: jkoopman <jkoopman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/29 11:23:43 by jkoopman      #+#    #+#                  #
-#    Updated: 2020/06/29 11:58:51 by jkoopman      ########   odam.nl          #
+#    Updated: 2020/07/04 14:05:41 by JKCTech       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-COM_COLOR   = \033[1;31m
-OBJ_COLOR   = \033[0;36m
-OK_COLOR    = \033[0;32m
-ERROR_COLOR = \033[0;31m
-WARN_COLOR  = \033[0;33m
-NO_COLOR    = \033[m
-OK_STRING    = "[OK]"
-ERROR_STRING = "[ERROR]"
-WARN_STRING  = "[WARNING]"
-COM_STRING   = "Compiling"
+CLR_GREEN	= \033[0;32m
+CLR_CYAN	= \033[0;36m
+CLR_RED		= \033[1;31m
+CLR_YELLOW	= \033[0;33m
+CLR_RESET	= \033[m
+
+STR_OK		= [OK]
+STR_FAIL	= [FAIL]
 
 NAME = libft.a
 FLAGS = -Wall -Werror -Wextra
@@ -42,7 +40,6 @@ SOURCES = ft_atoi.c \
 			ft_lstdelone.c \
 			ft_lstiter.c \
 			ft_lstlast.c \
-			ft_lstmap.c \
 			ft_lstnew.c \
 			ft_lstsize.c \
 			ft_memccpy.c \
@@ -57,6 +54,7 @@ SOURCES = ft_atoi.c \
 			ft_putnbr_fd.c \
 			ft_putstr_fd.c \
 			ft_split.c \
+			ft_str_replace.c \
 			ft_strchr.c \
 			ft_strcmp.c \
 			ft_strdup.c \
@@ -64,9 +62,7 @@ SOURCES = ft_atoi.c \
 			ft_strlcat.c \
 			ft_strlcpy.c \
 			ft_strlen.c \
-			ft_strmapi.c \
 			ft_strncmp.c \
-			ft_strnstr.c \
 			ft_strrchr.c \
 			ft_strtrim.c \
 			ft_substr.c \
@@ -75,37 +71,40 @@ SOURCES = ft_atoi.c \
 			ft_uitoa.c \
 			ft_uitohex.c
 
+HEADER = libft.h
+
 OBJECTS = $(SOURCES:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@printf "%-57b" "$(COM_COLOR)Building library: $(NO_COLOR)"
+	@printf "%-57b" "$(CLR_CYAN)Building LibFT: $(CLR_RESET)"
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
-	@printf "%b" "$(OK_COLOR)$(OK_STRING)\n$(NO_COLOR)"
+	@printf "%b" "$(CLR_GREEN)[OK]\n -- Complete! --\n$(CLR_RESET)"
 
-%.o: %.c
+%.o: %.c $(HEADERS)
 	@$(CC) -c $(FLAGS) $< -o $@; \
         RESULT=$$?; \
         if [ $$RESULT -ne 0 ]; then \
-            printf "%b %b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" \
-				"$(ERROR_COLOR)$(ERROR_STRING)$(NO_COLOR)\n"; \
+            printf "%-60b %b" "$(CLR_RED)Compiling$(CLR_CYAN) $<" \
+				"$(CLR_RED)$(STR_FAIL)$(CLR_RESET)\n"; \
 		else  \
-            printf "%-60b %b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $(@F)" \
-				"$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"; \
+            printf "%-60b %b" "$(CLR_RED)Compiling$(CLR_CYAN) $<" \
+				"$(CLR_GREEN)$(STR_OK)$(CLR_RESET)\n"; \
         fi; \
         exit $$RESULT
 
 clean:
-	@printf "%-57b" "$(COM_COLOR)Cleaning up object files: $(NO_COLOR)"
-	@$(RM) $(OBJECTS) a.out
-	@printf "%b" "$(OK_COLOR)$(OK_STRING)\n$(NO_COLOR)"
+	@printf "%-57b" "$(CLR_RED)Cleaning up objects: $(CLR_RESET)"
+	@$(RM) $(OBJECTS)
+	@printf "%b" "$(CLR_GREEN)$(STR_OK)\n$(CLR_RESET)"
 
 fclean: clean
-	@printf "%-57b" "$(COM_COLOR)Cleaning up $(NAME): $(NO_COLOR)"
-	@$(RM) $(NAME)
-	@printf "%b" "$(OK_COLOR)$(OK_STRING)\n$(NO_COLOR)"
+	@printf "%-57b" "$(CLR_RED)Cleaning up binary file: $(CLR_RESET)"
+	@$(RM) $(NAME) $(LIBFT)
+	@printf "%b" "$(CLR_GREEN)$(STR_OK)\n$(CLR_RESET)"
+	
 
 re: fclean all
 
