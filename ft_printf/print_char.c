@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_lstdelone.c                                     :+:    :+:            */
+/*   print_char.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/01 16:45:59 by jkoopman      #+#    #+#                 */
-/*   Updated: 2020/06/29 11:58:51 by jkoopman      ########   odam.nl         */
+/*   Created: 2019/12/12 17:53:55 by jkoopman      #+#    #+#                 */
+/*   Updated: 2020/07/05 16:46:23 by JKCTech       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include <libft.h>
+#include <unistd.h>
 
-/*
-** Sidenote: NEVER use this function in ANY production code UNLESS
-** you know and understand why this function introduces a so called
-** "use-after-free" exploit.
-*/
-
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void			ft_print_char(t_config *cfg, va_list ap)
 {
-	if (lst == NULL || del == NULL)
-		return ;
-	del(lst->content);
-	free(lst);
+	char	c;
+
+	cfg->i++;
+	c = (char)va_arg(ap, int);
+	if (cfg->min)
+		cfg->len += write(1, &c, 1);
+	cfg->len += print_padd(cfg->padd_char, cfg->width - 1);
+	if (!cfg->min)
+		cfg->len += write(1, &c, 1);
 }

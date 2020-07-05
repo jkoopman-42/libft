@@ -6,7 +6,7 @@
 #    By: jkoopman <jkoopman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/29 11:23:43 by jkoopman      #+#    #+#                  #
-#    Updated: 2020/07/04 14:05:41 by JKCTech       ########   odam.nl          #
+#    Updated: 2020/07/05 16:49:29 by JKCTech       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ STR_OK		= [OK]
 STR_FAIL	= [FAIL]
 
 NAME = libft.a
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -I.
 
 SOURCES = ft_atoi.c \
 			ft_bzero.c \
@@ -37,7 +37,6 @@ SOURCES = ft_atoi.c \
 			ft_lstadd_back.c \
 			ft_lstadd_front.c \
 			ft_lstclear.c \
-			ft_lstdelone.c \
 			ft_lstiter.c \
 			ft_lstlast.c \
 			ft_lstnew.c \
@@ -52,7 +51,7 @@ SOURCES = ft_atoi.c \
 			ft_putendl_fd.c \
 			ft_putnbr_base.c \
 			ft_putnbr_fd.c \
-			ft_putstr_fd.c \
+			ft_putstr.c \
 			ft_split.c \
 			ft_str_replace.c \
 			ft_strchr.c \
@@ -69,7 +68,18 @@ SOURCES = ft_atoi.c \
 			ft_tolower.c \
 			ft_toupper.c \
 			ft_uitoa.c \
-			ft_uitohex.c
+			ft_uitohex.c \
+			ft_printf/config.c \
+			ft_printf/ft_printf.c \
+			ft_printf/parser.c \
+			ft_printf/print_char.c \
+			ft_printf/print_hex.c \
+			ft_printf/print_num.c \
+			ft_printf/print_pcnt.c \
+			ft_printf/print_pointer.c \
+			ft_printf/print_string.c \
+			ft_printf/print_uint.c \
+			ft_printf/printer.c \
 
 HEADER = libft.h
 

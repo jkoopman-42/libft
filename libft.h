@@ -6,13 +6,15 @@
 /*   By: jkoopman <jkoopman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 11:10:37 by jkoopman      #+#    #+#                 */
-/*   Updated: 2020/07/04 14:07:31 by JKCTech       ########   odam.nl         */
+/*   Updated: 2020/07/05 16:44:00 by JKCTech       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # include <stddef.h>
+# include <stdarg.h>
 
 /*
 ** Defines
@@ -119,5 +121,44 @@ void				ft_lstadd_back(t_list **alst, t_list *new);
 void				ft_lstadd_front(t_list **alst, t_list *new);
 void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
+
+/*
+** Printf
+*/
+
+typedef struct			s_struct
+{
+	size_t				i;
+	int					padd;
+	char				padd_dir;
+	char				padd_char;
+	int					prec;
+	int					prec_zero;
+	int					prec_neg;
+	int					len;
+	int					upper;
+	int					sign;
+	int					min;
+	int					width;
+	int					zero;
+	int					error;
+}						t_config;
+
+int						ft_printf(const char *format, ...);
+void					parse(const char *format, t_config *cfg, va_list ap);
+t_config				*cfg_init(void);
+void					cfg_reset(t_config *cfg);
+void					printer(const char *format, t_config *cfg, va_list ap);
+void					print_pcnt(t_config *cfg);
+int						print_padd(char c, int count);
+void					ft_print_num(t_config *cfg, va_list ap);
+void					ft_print_hex(const char *format, t_config *cfg, \
+							va_list ap);
+void					ft_print_char(t_config *cfg, va_list ap);
+void					ft_print_string(t_config *cfg, va_list ap);
+void					ft_print_uint(t_config *cfg, va_list ap);
+void					ft_print_pointer(t_config *cfg, va_list ap);
+void					print_clear(t_config *cfg);
+void					ft_error(t_config *cfg);
 
 #endif
